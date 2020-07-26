@@ -1,0 +1,22 @@
+<div>
+  <h1>hello world</h1>
+</div>
+<script type="text/javascript">
+  var div = document.getElementById('hi');
+  fetch('http://localhost:3000/render?url=http://localhost:3000/https://infallible-hamilton-2296f5.netlify.app/2020/07/26/scan1/')
+      .then(function (response) {
+          let result = {
+              "error": false,
+              "errorReason": null
+          };
+          div.innerHTML = div.innerHTML + '<br/>' + JSON.stringify(result);
+      })
+      .catch(function (e) {
+          let receiveDate = (new Date()).getTime();
+          let result = {
+              "error": true,
+              "errorReason": e.message
+          };
+          div.innerHTML = div.innerHTML + '<br/>' + JSON.stringify(result);
+      })
+</script>
