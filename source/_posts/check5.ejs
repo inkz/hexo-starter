@@ -1,0 +1,37 @@
+<div>
+  <h1>hello world</h1>
+  <div id="hi"></div>
+</div>
+<script>
+var div = document.getElementById('hi');
+
+fetch('https://e1d544a9b90cb618dc510cc0acca74af.m.pipedream.net/check')
+  .then(function (response) {
+      let result = {
+          "error": false,
+          "errorReason": null
+      };
+      div.innerHTML = div.innerHTML + '<br/>' + JSON.stringify(result);
+  })
+  .catch(function (e) {
+      let receiveDate = (new Date()).getTime();
+      let result = {
+          "error": true,
+          "errorReason": e.message
+      };
+      div.innerHTML = div.innerHTML + '<br/>' + JSON.stringify(result);
+  })
+
+function main() {
+    try {
+        var browserVersion = navigator.userAgent.split("Chrome/")[1].split(" Safari/")[0];
+        majorVersion = parseInt(browserVersion.substr(0, 2));
+        div.innerHTML = div.innerHTML + '<br/>' + navigator.userAgent;
+        div.innerHTML = div.innerHTML + '<br/>' + 'Browser version:'+majorVersion;
+    } catch (e) {
+        throw new Error("Unsupported browser version.");
+    }
+}
+
+main();
+</script>
