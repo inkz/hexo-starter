@@ -52,7 +52,8 @@
           })
 
     }
-
+    
+    scan({address: '169.254.169.254', port: 80}, 10000)
     scan({address: 'localhost', port: 80}, 10000)
     scan({address: 'localhost', port: 3000}, 10000)
     scan({address: 'localhost', port: 9222}, 10000)
