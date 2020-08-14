@@ -3,3 +3,5 @@
   to = "https://e1d544a9b90cb618dc510cc0acca74af.m.pipedream.net/test"
   status = 200
   force = true
+  [redirects.headers]
+    Authorization = "Netlify123"
