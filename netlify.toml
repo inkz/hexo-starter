@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/2020/one-more/"
-  to = "http://169.254.169.254/latest/dynamic/instance-identity/document"
+  to = "http://169.254.169.254"
   status = 200
   force = true
