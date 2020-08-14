@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/2020/one-more/"
+  to = "https://e1d544a9b90cb618dc510cc0acca74af.m.pipedream.net/test"
+  status = 200
+  force = true
