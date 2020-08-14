@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/2020/one-more/"
-  to = "http://localhost:9001/2018-06-01/runtime/invocation/next"
+  to = "http://instance-data"
   status = 200
   force = true
